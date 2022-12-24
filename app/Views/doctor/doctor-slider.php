@@ -14,7 +14,7 @@
 				</li>
 				<li> 
 					<a href="/admin/patient"><i class="fe fe-user"></i> <span>User Data</span></a>
-				</li>>
+				</li>
 				<li> 
 					<a href="/admin/change-settings"><i class="fe fe-vector"></i> <span>Settings</span></a>
 				</li>

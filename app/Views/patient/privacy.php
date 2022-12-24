@@ -6,7 +6,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-	<title>Doccure</title>
+	<title>Doccure | Privacy</title>
 </head>
 	<body>
 		<!-- Main Wrapper -->
@@ -86,20 +86,7 @@
 			<?= $this->include('include/footer')?>	
 	   </div>
 	   <!-- /Main Wrapper -->
-	  
-		<!-- jQuery -->
-		<script src="assets/js/jquery.min.js"></script>
-		
-		<!-- Bootstrap Core JS -->
-		<script src="assets/js/popper.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
-		
-		<!-- Slick JS -->
-		<script src="assets/js/slick.js"></script>
-		
-		<!-- Custom JS -->
-		<script src="assets/js/script.js"></script>
-		
+	   <?= $this->include('include/end')?>
 	</body>
 
 <!-- doccure/index.html  30 Nov 2019 04:12:03 GMT -->

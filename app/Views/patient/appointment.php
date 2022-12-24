@@ -6,10 +6,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <link rel="stylesheet" type="text/css" href="<?= base_url()?>/jquery-datetimepicker/jquery.datetimepicker.css"/ >
-    <script src="<?= base_url()?>/jquery-datetimepicker/jquery.js"></script>
-    <script src="<?= base_url()?>/jquery-datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
-	<title>Doccure</title>
+	<title>Doccure | Appointment</title>
 </head>
 	<body>
 		<!-- Main Wrapper -->
@@ -171,20 +168,7 @@
 			<?= $this->include('include/footer')?>	
 	   </div>
 	   <!-- /Main Wrapper -->
-	  
-		<!-- jQuery -->
-		<script src="assets/js/jquery.min.js"></script>
-		
-		<!-- Bootstrap Core JS -->
-		<script src="assets/js/popper.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
-		
-		<!-- Slick JS -->
-		<script src="assets/js/slick.js"></script>
-		
-		<!-- Custom JS -->
-		<script src="assets/js/script.js"></script>
-
+	   <?= $this->include('include/end')?>	
         <script>
             jQuery('#datetimepicker').datetimepicker({
             onGenerate:function( ct ){
@@ -193,6 +177,7 @@
             },
             weekends:['01.01.2014','02.01.2014','03.01.2014','04.01.2014','05.01.2014','06.01.2014'],
             allowTimes:['10:00', '11:30', '12:30','13:00', '14:00', '14:30'],
+			minDate:'-1970/01/01',
             todayButton:true,
             });
         </script>

@@ -39,45 +39,33 @@ $routes->setAutoRoute(true);
 
 
 $routes->group('', ['filter' => 'AuthCheckLogged'], function ($routes){
-    $routes->get('auth/register', 'AuthController::register');
-    $routes->post('auth/register', 'AuthController::register');
-    $routes->get('auth/login', 'AuthController::index');
-    $routes->post('auth/login', 'AuthController::index');
-    $routes->get('auth/recovery-password/(:any)', 'AuthController::recoveryKey');
-    $routes->post('auth/recovery-password/(:any)', 'AuthController::recoveryKey');       
-    $routes->get('auth/recovery-password', 'AuthController::recovery');
-    $routes->post('auth/recovery-password', 'AuthController::recovery');
+
+    $routes->match(['get', 'post'], 'auth/register', 'AuthController::register');
+    $routes->match(['get', 'post'], 'auth/login', 'AuthController::index');
+    $routes->match(['get', 'post'], 'auth/recovery-password/(:any)', 'AuthController::recoveryKey');
+    $routes->match(['get', 'post'], 'auth/recovery-password', 'AuthController::recovery');
 });
 
 
 $routes->group('', ['filter' => 'AuthCheck'], function ($routes){
     $routes->get('auth/logout', 'AuthController::logout');
     $routes->get('dashboard', 'DashboardController::index');
-    $routes->get('dashboard/change-password', 'DashboardController::changePassword');
-    $routes->post('dashboard/change-password', 'DashboardController::changePassword');
-    $routes->get('dashboard/change-photo', 'DashboardController::changePhoto');
-    $routes->post('dashboard/change-photo', 'DashboardController::changePhoto');
-    $routes->get('dashboard/change-data', 'DashboardController::changeData');
-    $routes->post('dashboard/change-data', 'DashboardController::changeData');
-    $routes->get('user/appointment', 'AppointmentController::insertbooking');
-    $routes->post('user/appointment', 'AppointmentController::insertbooking');    
+
+    $routes->match(['get', 'post'], 'dashboard/change-password', 'DashboardController::changePassword');
+    $routes->match(['get', 'post'], 'dashboard/change-photo', 'DashboardController::changePhoto');
+    $routes->match(['get', 'post'], 'dashboard/change-data', 'DashboardController::changeData');
+    $routes->match(['get', 'post'], 'user/appointment', 'AppointmentController::insertbooking');
 });
 
-    $routes->get('admin/login', 'DocAuthController::index');
-    $routes->post('admin/login', 'DocAuthController::index');
-
+    $routes->match(['get', 'post'], 'admin/login', 'DocAuthController::index');
 
 $routes->group('', ['filter' => 'AuthDoctor'], function ($routes){
     $routes->get('admin/logout', 'DocAuthController::logout');
 
-    $routes->get('admin/change-settings', 'DashboardController::changeSettings');
-    $routes->post('admin/change-settings', 'DashboardController::changeSettings'); 
+    $routes->match(['get', 'post'], 'admin/change-settings', 'DashboardController::changeSettings');
+    $routes->match(['get', 'post'], 'admin/appointment',  'DoctorDashboard::appointment');
+    $routes->match(['get', 'post'], 'admin/patient', 'DoctorDashboard::patient');
     
-    $routes->get('admin/appointment',  'DoctorDashboard::appointment');
-    $routes->post('admin/appointment',  'DoctorDashboard::appointment');
-    $routes->post('admin/patient', 'DoctorDashboard::patient');
-    $routes->get('admin/patient', 'DoctorDashboard::patient');
-
     $routes->get('admin/dashboard', 'Home::ddashboard');    
 });
 
