@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="<?= base_url()?>/jquery-datetimepicker/jquery.datetimepicker.css"/ >
+    <script src="<?= base_url()?>/jquery-datetimepicker/jquery.js"></script>
+    <script src="<?= base_url()?>/jquery-datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
     <title>Doccure | Profile</title>
 </head>
 <body>
@@ -39,7 +42,30 @@
                     <div class="card">
                         <div class="card-body">     
                             <!-- Profile Settings Form -->
-                            <form action="<?= base_url('dashboard/change-photo') ?>"  method="post" enctype="multipart/form-data">
+                            <?php $errors = session()->getFlashdata('errors'); ?>
+                            <?php if (!empty($errors)) : ?>
+                                <div class="alert alert-danger">
+                                    <ul class="list-unstyled">
+                                        <?php foreach ($errors as $error) : ?>
+                                            <li><?php echo $error ?></li>
+                                        <?php endforeach ?>
+                                    </ul>
+                                </div>
+                            <?php endif ?>
+
+                            <?php if (!empty(session()->getFlashdata('error'))) : ?>
+                                <div class="alert alert-danger">
+                                    <?= session()->getFlashdata('error'); ?>
+                                </div>
+                            <?php endif ?>
+
+                            <?php if (!empty(session()->getFlashdata('success'))) : ?>
+                                <div class="alert alert-success">
+                                    <?= session()->getFlashdata('success'); ?>
+                                </div>
+                            <?php endif ?>
+
+                            <form action="<?= base_url('dashboard/profile') ?>"  method="post" enctype="multipart/form-data">
                                 <div class="row form-row">
                                     <div class="col-12 col-md-12">
                                         <div class="form-group">
@@ -56,34 +82,35 @@
                                                     <div class="form-group mb-3">
                                                         <input name="photo" id="photo" type="file" class="form-control" accept="image/*">
                                                     </div>  
-                                                <?= @csrf_field() ?>                                                 
+                                                                                               
                                             </div>
                                         </div>
                                     </div>
+                                    <?php foreach($info as $user):?>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label>First Name</label>
-                                            <input type="text" class="form-control" value="Richard">
+                                            <input type="text" name='firstname' class="form-control" value="<?php echo $user->firstname;?>">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label>Last Name</label>
-                                            <input type="text" class="form-control" value="Wilson">
+                                            <input type="text" name='lastname' class="form-control" value="<?php echo $user->lastname;?>">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label>Date of Birth</label>
                                             <div class="cal-icon">
-                                                <input type="text" class="form-control datetimepicker" value="24-07-1983">
+                                                <input type="text" name='birthday' id="datetimepicker" class="form-control" value="<?php echo $user->birthday;?>">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
-                                            <label>Blood Group</label>
-                                            <select class="form-control select">
+                                            <label>Blood Type</label>
+                                            <select class="form-control select" name='bloodtype' value='<?php echo $user->bloodtype;?>'>
                                                 <option>A-</option>
                                                 <option>A+</option>
                                                 <option>B-</option>
@@ -97,46 +124,42 @@
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
-                                            <label>Email ID</label>
-                                            <input type="email" class="form-control" value="richard@example.com">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="form-group">
                                             <label>Mobile</label>
-                                            <input type="text" value="+1 202-555-0125" class="form-control">
+                                            <input type="text" name='number' value="<?php echo $user->number;?>" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                         <label>Address</label>
-                                            <input type="text" class="form-control" value="806 Twin Willow Lane">
+                                            <input type="text" name='address' class="form-control" value="<?php echo $user->address;?>">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label>City</label>
-                                            <input type="text" class="form-control" value="Old Forge">
+                                            <input type="text" name='city' class="form-control" value="<?php echo $user->city;?>">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label>State</label>
-                                            <input type="text" class="form-control" value="Newyork">
+                                            <input type="text" name='state' class="form-control" value="<?php echo $user->state;?>">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label>Zip Code</label>
-                                            <input type="text" class="form-control" value="13420">
+                                            <input type="text" name='zipcode' class="form-control" value="<?php echo $user->zipcode;?>">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label>Country</label>
-                                            <input type="text" class="form-control" value="United States">
+                                            <input type="text" name='country' class="form-control" value="<?php echo $user->country;?>">
                                         </div>
                                     </div>
+                                    <?php endforeach;?>
+                                    <?= @csrf_field() ?>  
                                 </div>
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
@@ -151,6 +174,25 @@
 
     </div>      
     <!-- /Page Content -->
-    <?= $this->include('include/end')?>
+    <!-- jQuery -->
+		<script src="assets/js/jquery.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="assets/js/popper.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		
+		<!-- Slick JS -->
+		<script src="assets/js/slick.js"></script>
+		
+		<!-- Custom JS -->
+		<script src="assets/js/script.js"></script>
+
+        <script>
+            jQuery('#datetimepicker').datetimepicker({
+            format:"m/d/Y",
+            timepicker:false,
+            todayButton:true,
+            });
+        </script>
 </body>
 </html>

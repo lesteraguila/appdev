@@ -70,13 +70,17 @@ class AuthController extends BaseController
 
             if ($authModel->insert($values)) {
                 $lastRegisterCustomer = $authModel->insertID();
+
+                $auth = new \App\Models\AuthModel();
+                $auth->inserUserId($lastRegisterCustomer);
+               
                 session()->set('loggedCustomer', $lastRegisterCustomer);
                 return redirect()->to('/dashboard')->with('success', 'You are successfully registered.');
             } else {
                 return redirect()->to('/auth/register')->withInput()->with('errors', $authModel->errors());
             }
         }
-
+        
         return view('/patient/register', $data);
     }
 

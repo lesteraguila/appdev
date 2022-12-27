@@ -23,7 +23,7 @@ class DocAuthController extends BaseController
         ]);
 
         if(session()->has('loggedDoctor')){
-            return redirect()->to('admin/change-settings');
+            return redirect()->to('admin/dashboard');
         }
         
         if($this->request->getPost())

@@ -6,6 +6,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" type="text/css" href="<?= base_url()?>/jquery-datetimepicker/jquery.datetimepicker.css"/ >
+    <script src="<?= base_url()?>/jquery-datetimepicker/jquery.js"></script>
+    <script src="<?= base_url()?>/jquery-datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
 	<title>Doccure | Appointment</title>
 </head>
 	<body>
@@ -168,7 +171,20 @@
 			<?= $this->include('include/footer')?>	
 	   </div>
 	   <!-- /Main Wrapper -->
-	   <?= $this->include('include/end')?>	
+	  
+		<!-- jQuery -->
+		<script src="assets/js/jquery.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="assets/js/popper.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		
+		<!-- Slick JS -->
+		<script src="assets/js/slick.js"></script>
+		
+		<!-- Custom JS -->
+		<script src="assets/js/script.js"></script>
+
         <script>
             jQuery('#datetimepicker').datetimepicker({
             onGenerate:function( ct ){

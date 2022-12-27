@@ -5,13 +5,9 @@ namespace App\Controllers;
 class Home extends BaseController
 {
     public function index()
-
-    {   $booking = new \App\Models\Booking();
-        $data['users'] = $booking->getAll();
-
-        //return view('date', $data);
-        //return view('patient/about');
+    {   
         return view('patient/index');
+        
     }
 
     public function privacy()
@@ -29,4 +25,12 @@ class Home extends BaseController
         return view('doctor/doctor-dashboard');
     }
 
+    public function slider() {
+        $authModel = new \App\Models\AuthModel();
+        $loggedUserId = session()->get('loggedCustomer');
+        $userInfo['data'] = $authModel->where('id', $loggedUserId)->find();
+        
+        //print_r($userInfo->photo);
+        return view('patient/profile-slider', $userInfo);
+    }
 }

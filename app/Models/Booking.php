@@ -18,8 +18,8 @@ class Booking extends Model
         $builder = $this->db->table('customer');   
         $builder->select('booking.id, name, email, firstname, lastname, treatment, number, status, datetime');
         $builder->join('booking', 'customer.id = booking.user_id', 'inner');
-        $query = $builder->get();
-        return $query->getResult();
+        $query = $builder->get()->getResult();
+        return $query;
     }
 
     function getby($id)
@@ -34,10 +34,9 @@ class Booking extends Model
     {
         $session = session('loggedCustomer');
         $builder = $this->db->table('customer');   
-        $builder->select('booking.id, treatment, status, datetime');
-        $builder->where('booking.user_id', $session);
+        $builder->select('booking.id, treatment, status, datetime')->where('booking.user_id', $session);
         $builder->join('booking', 'customer.id = booking.user_id', 'inner');
-        $query = $builder->get();
-        return $query->getResult();
+        $query = $builder->get()->getResult();
+        return $query;
     }
 }

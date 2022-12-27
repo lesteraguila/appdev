@@ -57,4 +57,12 @@ class AuthModel extends Model
         unset($data['data']['repassword']);
         return $data;
     }
+
+    public function inserUserId($id) {
+        $data = [
+            'user_id' => $id
+        ];
+        $this->db->table('customer_information')->insert($data);
+    }
+    
 }

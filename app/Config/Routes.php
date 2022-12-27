@@ -52,7 +52,7 @@ $routes->group('', ['filter' => 'AuthCheck'], function ($routes){
     $routes->get('dashboard', 'DashboardController::index');
 
     $routes->match(['get', 'post'], 'dashboard/change-password', 'DashboardController::changePassword');
-    $routes->match(['get', 'post'], 'dashboard/change-photo', 'DashboardController::changePhoto');
+    $routes->match(['get', 'post'], 'dashboard/profile', 'DashboardController::changePhoto');
     $routes->match(['get', 'post'], 'dashboard/change-data', 'DashboardController::changeData');
     $routes->match(['get', 'post'], 'user/appointment', 'AppointmentController::insertbooking');
 });

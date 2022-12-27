@@ -22,6 +22,8 @@ class DashboardController extends BaseController
         $data['title'] = 'Change Password';
 
         $authModel = new \App\Models\AuthModel();
+        $loggedUserId = session()->get('loggedCustomer');
+        $userInfo['data'] = $authModel->where('id', $loggedUserId)->find();
 
         $validation = $this->validate([
             'password' => [
@@ -78,10 +80,12 @@ class DashboardController extends BaseController
     {
         $session = session();
         $authModel = new \App\Models\AuthModel();
+        $auth = new \App\Models\UserInformation();
 
         $loggedUserId = session()->get('loggedCustomer');
         $userInfo = $authModel->find($loggedUserId);
-
+        $data['info'] = $auth->where('user_id', $loggedUserId)->find();
+        
         $data['title'] = 'Altered photoo';
         $data['photo'] = $userInfo->photo;
         $data['name'] = $userInfo->name;
@@ -100,9 +104,24 @@ class DashboardController extends BaseController
                         . '|max_dims[photo,7680,4320]',
                 ],
             ];
+    
+            $values = [
+                'firstname' => $this->request->getPost('firstname'), 
+                'lastname' => $this->request->getPost('lastname'), 
+                'birthday' => $this->request->getPost('birthday'), 
+                'bloodtype' => $this->request->getPost('bloodtype'), 
+                'number' => $this->request->getPost('number'), 
+                'address' => $this->request->getPost('address'), 
+                'city' => $this->request->getPost('city'), 
+                'state' => $this->request->getPost('state'), 
+                'zipcode' => $this->request->getPost('zipcode'), 
+                'country' => $this->request->getPost('country')
+            ];
 
+            $auth->where('user_id', $loggedUserId)->set($values)->update();
+            
             if (!$this->validate($validationRules)) {
-                return redirect()->to('/dashboard/change-photo')->withInput()->with('errors', $this->validator->getErrors());
+                return redirect()->to('/dashboard/profile');
             } else {
 
                 $photo = $file->getName();
@@ -120,12 +139,12 @@ class DashboardController extends BaseController
                         unlink($deletePhoto);
                     }
 
-                    if ($authModel->update($userInfo->id, $data)) {
-                        $session->setFlashdata("success", "A foto foi atualizada com sucesso");
+                    if ($authModel->update($userInfo->id, $data)) {                       
+                        $session->setFlashdata("success", "Profile information updated succesfuly");
                     } else {
-                        $session->setFlashdata("error", "Houve um erro na alteração dos dados");
+                        $session->setFlashdata("error", "Profile information failed to update.");
                     }
-                    return redirect()->to('/dashboard/change-photo');
+                    return redirect()->to('/dashboard/profile');
                 }
             }
             return view('/patient/profile', $data);

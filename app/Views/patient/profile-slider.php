@@ -5,7 +5,7 @@
         <div class="widget-profile pro-widget-content">
             <div class="profile-info-widget">
                 <a href="#" class="booking-doc-img">
-                    <img src="<?=base_url()?>/assets/img/patients/patient.jpg" alt="User Image">
+                    <img src="<?=base_url()?>/assets/img/patients/patient4.jpg" alt="User Image">
                 </a>
                 <div class="profile-det-info">
                     <h3>Richard Wilson</h3>
@@ -26,7 +26,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url('dashboard/change-photo') ?>">
+                        <a href="<?= base_url('dashboard/profile') ?>">
                             <i class="fas fa-user-cog"></i>
                             <span>Profile Settings</span>
                         </a>

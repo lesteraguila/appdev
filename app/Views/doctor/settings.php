@@ -3,21 +3,10 @@
     
 <!-- Mirrored from dreamguys.co.in/demo/doccure/admin/form-vertical.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:55 GMT -->
 <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Doccure - Settings</title>
-		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="<?= base_url()?>/admin-assets/img/favicon.png">
-		<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="<?= base_url()?>/admin-assets/css/bootstrap.min.css">	
-		<!-- Fontawesome CSS -->
-        <link rel="stylesheet" href="<?= base_url()?>/admin-assets/css/font-awesome.min.css">	
-		<!-- Feathericon CSS -->
-        <link rel="stylesheet" href="<?= base_url()?>/admin-assets/css/feathericon.min.css">	
-		<!-- Select2 CSS -->
-		<link rel="stylesheet" href="<?= base_url()?>/admin-assets/css/select2.min.css">	
-		<!-- Main CSS -->
-        <link rel="stylesheet" href="<?= base_url()?>/admin-assets/css/style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>Doccure - Settings</title>
+	<?= $this->include('doctor/include/top')?>
 </head>
     <body>
 		<!-- Main Wrapper -->
