@@ -72,7 +72,7 @@
 																	<th></th>
 																</tr>
 															</thead>
-															<tbody>
+															<tbody class="booking">
 																<?php foreach($users as $user):?>
 																<tr>
 																	<td><?php echo $user->id;?>	</td>
@@ -86,8 +86,12 @@
 																	<?php else:?>
 																		<span class="badge badge-pill bg-success-light">cancelled</span>
 																	<?php endif?>
-																	</td>																		
-																
+																	</td>	
+																	<td>
+																	<a href="" class="btn btn-sm bg-warning light" disabled>
+																		<i class="fas fa-times"></i> Cancel
+																	</a>
+																	</td>																	
 																</tr>
 																<?php endforeach?>
 															</tbody>
@@ -159,5 +163,43 @@
 			</div>		
 			<!-- /Page Content -->
 	<?= $this->include('include/end')?>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			<?php if(session()->getFlashdata('status')):?>
+			swal({
+				title: "<?= session()->getFlashdata('status')?>",
+				text: "<?= session()->getFlashdata('status2')?>",
+				icon: "success",
+				timer:1500,
+				button:false,
+				});
+			<?php endif;?>
+		});
+
+		$(document).ready(function(){
+			loaduser();
+		});
+
+		function loaduser(){
+			$.ajax({
+				method:"GET",
+				url:"/try",
+				success: function(response){
+					$.each(response.user, function(key, value){
+						//console.log(value['firstname']);
+						$('.bookingdata').append(
+							'<tr>\
+								<td>' +value['id']+'</td>\
+								<td>' +value['firstname']+'</td>\
+								<td>' +value['lastname']+'</td>\
+								<td>' +value['treatment']+'</td>\
+							</td>'
+						);
+					});
+				}
+			});
+		}
+	</script>
 </body>
 </html>

@@ -1,11 +1,12 @@
-<?= $this->include('include/top')?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Doccure - Settings</title>
+        <title>Doccure - Appoinments</title>
+		<?= $this->include('include/top')?>
 		<!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="<?= base_url()?>/admin-assets/img/favicon.png">
 		<!-- Bootstrap CSS -->
@@ -17,13 +18,14 @@
 		<!-- Select2 CSS -->
 		<link rel="stylesheet" href="<?= base_url()?>/admin-assets/css/select2.min.css">	
 		<!-- Main CSS -->
-        <link rel="stylesheet" href="<?= base_url()?>/admin-assets/css/style.css">>
+        <link rel="stylesheet" href="<?= base_url()?>/admin-assets/css/style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 		<!-- Datatables CSS -->
 		<link rel="stylesheet" href="<?= base_url()?>/admin-assets/plugins/datatables/datatables.min.css">
 		<link rel="stylesheet" type="text/css" href="<?= base_url()?>/jquery-datetimepicker/jquery.datetimepicker.css"/ >
     	<script src="<?= base_url()?>/jquery-datetimepicker/jquery.js"></script>
     	<script src="<?= base_url()?>/jquery-datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
+		
 </head>
     <body>
 		<!-- Main Wrapper -->
@@ -64,6 +66,9 @@
 									<li class="nav-item">
 										<a class="nav-link" href="#today-appointments" data-toggle="tab">Today</a>
 									</li> 
+									<li class="nav-item">
+										<a class="nav-link" href="#tomorrow-appointments" data-toggle="tab">Tomorrow</a>
+									</li> 
 								</ul>
 								<!-- /Appointment Tab -->	
 								<div class="tab-content">
@@ -102,7 +107,12 @@
 																		<span class="badge badge-pill bg-success-light"><?php echo $user->status;?></span>
 																	<?php endif?>
 																<td>
-																<a data-toggle="modal" href="#edit_invoice_report" class="btn btn-sm bg-info-light md" data-number="<?php echo $user->datetime;?>">
+																<a data-toggle="modal" href="#edit_invoice_report" class="btn btn-sm bg-info-light md" 
+																date-id ="<?php echo $user->id;?>" 
+																data-fistname="<?php echo $user->firstname;?>" 
+																data-lastname="<?php eho $user->lastname;?>"
+																data-number="<?php echo $user->number"
+																data-datetime="<?php echo $user->datetime;?>">
 																			<i class="far fa-eye"></i> View
 																		</a>
 																<?php if($user->status == 'PENDING'):?>
@@ -143,27 +153,52 @@
 															</tr>
 														</thead>
 														<tbody>
+															<?php foreach($expired as $today):?>
 															<tr>
-																<td>Fever</td>
-																<td>14 Nov 2019 <span class="d-block text-info">6.00 PM</span></td>
-																<td>Fever</td>
-																<td>Old Patient</td>
-																<td class="text-center">$300</td>
-																<td class="text-right">
-																	<div class="table-action">
-																		<a href="#edit_invoice_report" class="btn btn-sm bg-info-light">
-																			<i class="far fa-eye"></i> View
-																		</a>
-																		
-																		<a href="javascript:void(0);" class="btn btn-sm bg-success-light">
-																			<i class="fas fa-check"></i> Accept
-																		</a>
-																		<a href="javascript:void(0);" class="btn btn-sm bg-danger-light">
-																			<i class="fas fa-times"></i> Cancel
-																		</a>
-																	</div>
-																</td>
+															<td><?php echo $today->id;?></td>
+															<td><?php echo $today->firstname;?></td>
+															<td><?php echo $today->lastname;?></td>
+															<td><?php echo $today->number;?></td>
+															<td><?php echo $today->datetime;?></td>
+															<td><?php echo $today->treatment;?></td>
 															</tr>
+															<?php endforeach;?>
+														</tbody>
+													</table>		
+												</div>	
+											</div>	
+										</div>	
+									</div>
+									<!-- /Today Appointment Tab -->
+
+									<!-- Today Appointment Tab -->
+									<div class="tab-pane" id="tomorrow-appointments">
+										<div class="card card-table mb-0">
+											<div class="card-body">
+												<div class="table-responsive">
+													<table class="table table-hover table-center mb-0" >
+														<thead>
+															<tr>
+																<th>Apptss ID</th>
+																<th>First Name</th>
+																<th>Last Name</th>
+																<th>Number</th>
+																<th>Appt Date</th>
+																<th>Purpose</th>																		
+																<th></th>
+															</tr>
+														</thead>
+														<tbody>
+															<?php foreach($expired as $today):?>
+															<tr>
+															<td><?php echo $today->id;?></td>
+															<td><?php echo $today->firstname;?></td>
+															<td><?php echo $today->lastname;?></td>
+															<td><?php echo $today->number;?></td>
+															<td><?php echo $today->datetime;?></td>
+															<td><?php echo $today->treatment;?></td>
+															</tr>
+															<?php endforeach;?>
 														</tbody>
 													</table>		
 												</div>	
@@ -250,6 +285,17 @@
 					$(".test_data").val(price);
 				})
 			})
+
+			$(document).on('click', '#edit_invoice_report', function(){
+				var date = $('#datetimepicker').val();
+				$.ajax({
+					url: '<?= site_url('killer')?>',
+					method: 'post',
+					data:{
+						
+					}
+				});
+			});
 		</script>
 		<script>
             jQuery('#datetimepicker').datetimepicker({

@@ -14,6 +14,7 @@
 
 		<!-- Header -->
 		<?= $this->include('doctor/include/header')?>
+		
 		<!-- /Header -->	
 
 		<!-- Sidebar -->

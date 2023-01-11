@@ -11,6 +11,15 @@ class UserData extends Model
     protected $primaryKey = 'id';
     protected $returnType = 'array';
     protected $allowedFields = ['name', 'email', 'password', 'repassword', 
-                                'active','recovery_hash','recovery_expires','photo', 'created_at'];
+    'active','recovery_hash','recovery_expires','photo', 'created_at'];
+
+    function getby($id)
+    {
+        $builder = $this->db->where('id', $id);
+        $query = $builder->get();
+        return $query->getRow();
+    }
 
 }
+
+

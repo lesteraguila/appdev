@@ -54,6 +54,7 @@ $routes->group('', ['filter' => 'AuthCheck'], function ($routes){
     $routes->match(['get', 'post'], 'dashboard/change-password', 'DashboardController::changePassword');
     $routes->match(['get', 'post'], 'dashboard/profile', 'DashboardController::changePhoto');
     $routes->match(['get', 'post'], 'dashboard/change-data', 'DashboardController::changeData');
+
     $routes->match(['get', 'post'], 'user/appointment', 'AppointmentController::insertbooking');
 });
 
@@ -69,6 +70,10 @@ $routes->group('', ['filter' => 'AuthDoctor'], function ($routes){
     $routes->get('admin/dashboard', 'Home::ddashboard');    
 });
 
+$routes->get('killer', 'DashboardController::reschedule');
+
+
+$routes->get('try', 'Home::fetch');
 
 
 

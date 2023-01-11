@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,8 +66,7 @@
 												<td><?=$user['id'];?></td>
 												<td><?=$user['name'];?></td>
 												<td><?=$user['email'];?></td>
-												<td><?=$user['created_at'];?></td>							
-											</tr>
+												<td><?=$user['created_at'];?></td>	
 											<?php endforeach;?>
 										</tbody>
 									</table>

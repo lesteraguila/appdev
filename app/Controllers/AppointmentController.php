@@ -24,7 +24,10 @@ class AppointmentController extends BaseController
                 'status' => 'PENDING'
             ];
             $booking->insert($values);
-            return redirect()->to('/dashboard');
+
+            return redirect()->to('/dashboard')
+            ->with('status', "Booking successfully!")
+            ->with('status2', 'Please wait for your confirmation.');
         }
         return view('patient/appointment');
     }

@@ -12,5 +12,13 @@ class UserInformation extends Model
     protected $returnType = 'object';
     protected $allowedFields = ['user_id', 'firstname', 'lastname', 'birthday', 
     'bloodtype', 'number', 'address', 'city', 'state', 'zipcode', 'country'];
+
+    function getby($id)
+    {
+        $builder = $this->db->table('customer_information');
+        $builder->where('id', $id);
+        $query = $builder->get();
+        return $query->getRow();
+    }
     
 }

@@ -1,13 +1,28 @@
 <?php
 
 namespace App\Controllers;
+use CodeIgniter\I18n\Time;
 
 class Home extends BaseController
 {
     public function index()
     {   
         return view('patient/index');
-        
+
+        $date = new \App\Models\Booking();
+        //$myTime = Time::today('Asia/Manila');
+        //$myTime = new Time('now');
+
+        // $today = Time::today();
+        // $tomorrow = Time::tomorrow();
+        // $data_array = array('datetime >=' => $today, 'datetime <' => $tomorrow);
+        // $data = $date->where($data_array)->find();
+    }
+
+    public function fetch(){
+        $date = new \App\Models\Booking();
+        $data['user'] = $date->findAll();
+        return $this->response->setJSON($data);
     }
 
     public function privacy()

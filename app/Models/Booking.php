@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use CodeIgniter\I18n\Time;
 
 use CodeIgniter\BaseModel;
 use CodeIgniter\Model;

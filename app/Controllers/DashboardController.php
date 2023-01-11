@@ -195,4 +195,13 @@ class DashboardController extends BaseController
         return view('doctor/settings');
     }
 
+    public function reschedule(){
+        $date = new \App\Models\Booking();
+
+        $data = $date->where('id','11')->set(['datetime'=>'2023-01-09 14:43:00'])->update();
+
+        $output = array('status'=>'Updated', 'data'=>$data);
+        return $this->response->setJSON($output);
+    }
+
 }
