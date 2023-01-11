@@ -52,10 +52,16 @@
 								<div class="dashboard-widget">
 									<nav class="dashboard-menu">
 										<ul>
-											<li>
+											<li class="active">
 												<a href="<?= base_url('dashboard') ?>">
 													<i class="fas fa-columns"></i>
 													<span>Dashboard</span>
+												</a>
+											</li>
+											<li>
+												<a href="<?= base_url('user/appointment') ?>">
+													<i class="fas fa-bookmark"></i>
+													<span>Appointment</span>
 												</a>
 											</li>
 											<li>

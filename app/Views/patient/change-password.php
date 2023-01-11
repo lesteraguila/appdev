@@ -55,13 +55,19 @@
                                                 <span>Dashboard</span>
                                             </a>
                                         </li>
+										<li>
+											<a href="<?= base_url('user/appointment') ?>">
+												<i class="fas fa-bookmark"></i>
+												<span>Appointment</span>
+											</a>
+										</li>
                                         <li>
                                             <a href="<?= base_url('dashboard/profile') ?>">
                                                 <i class="fas fa-user-cog"></i>
                                                 <span>Profile Settings</span>
                                             </a>
                                         </li>
-                                        <li>
+                                        <li class="active">
                                             <a href="<?= base_url('dashboard/change-password') ?>">
                                                 <i class="fas fa-lock"></i>
                                                 <span>Change Password</span>

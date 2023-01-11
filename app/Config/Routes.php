@@ -66,13 +66,16 @@ $routes->group('', ['filter' => 'AuthDoctor'], function ($routes){
     $routes->match(['get', 'post'], 'admin/change-settings', 'DashboardController::changeSettings');
     $routes->match(['get', 'post'], 'admin/appointment',  'DoctorDashboard::appointment');
     $routes->match(['get', 'post'], 'admin/patient', 'DoctorDashboard::patient');
+    $routes->match(['get', 'post'], 'admin/social-media', 'DoctorDashboard::social');
+    
+
     
     $routes->get('admin/dashboard', 'Home::ddashboard');    
 });
 
+
+
 $routes->get('killer', 'DashboardController::reschedule');
-
-
 $routes->get('try', 'Home::fetch');
 
 

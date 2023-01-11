@@ -47,7 +47,7 @@
                             <ul>
                                 <li><a href="<?= base_url('auth/login') ?>"><i class="fas fa-angle-double-right"></i> Login</a></li>
                                 <li><a href="<?= base_url('auth/register') ?>"><i class="fas fa-angle-double-right"></i> Register</a></li>
-                                <li><a href="booking.html"><i class="fas fa-angle-double-right"></i> Booking</a></li>
+                                <li><a href="/user/appointment"><i class="fas fa-angle-double-right"></i> Booking</a></li>
                                 <li><a href="<?= base_url('dashboard') ?>"><i class="fas fa-angle-double-right"></i> Patient Dashboard</a></li>
                             </ul>
                         </div>

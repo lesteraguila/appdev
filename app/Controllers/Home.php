@@ -8,8 +8,6 @@ class Home extends BaseController
     public function index()
     {   
         return view('patient/index');
-
-        $date = new \App\Models\Booking();
         //$myTime = Time::today('Asia/Manila');
         //$myTime = new Time('now');
 
@@ -21,7 +19,7 @@ class Home extends BaseController
 
     public function fetch(){
         $date = new \App\Models\Booking();
-        $data['user'] = $date->findAll();
+        $data = $date->findAll();
         return $this->response->setJSON($data);
     }
 

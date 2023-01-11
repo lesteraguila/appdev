@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +45,7 @@
 							<div class="col">
 								<h3 class="page-title">Appointment</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+									<li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
 									<li class="breadcrumb-item active">Appoinment</li>
 								</ul>
 							</div>
@@ -78,7 +77,7 @@
 									<div class="card card-table mb-0">
 											<div class="card-body">
 												<div class="table-responsive">
-													<table class="table table-hover table-center mb-0" id="table_id">	
+													<table class="table table-hover table-center mb-0">	
 														<thead>
 															<tr>
 																<th>Appt ID</th>
@@ -107,12 +106,7 @@
 																		<span class="badge badge-pill bg-success-light"><?php echo $user->status;?></span>
 																	<?php endif?>
 																<td>
-																<a data-toggle="modal" href="#edit_invoice_report" class="btn btn-sm bg-info-light md" 
-																date-id ="<?php echo $user->id;?>" 
-																data-fistname="<?php echo $user->firstname;?>" 
-																data-lastname="<?php eho $user->lastname;?>"
-																data-number="<?php echo $user->number"
-																data-datetime="<?php echo $user->datetime;?>">
+																<a data-toggle="modal" href="#edit_invoice_report" class="btn btn-sm bg-info-light md" data-number="<?php echo $user->datetime;?>">
 																			<i class="far fa-eye"></i> View
 																		</a>
 																<?php if($user->status == 'PENDING'):?>

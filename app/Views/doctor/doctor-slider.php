@@ -13,7 +13,10 @@
 					<a href="/admin/appointment"><i class="fe fe-layout"></i> <span>Appointments</span></a>
 				</li>
 				<li> 
-					<a href="/admin/patient"><i class="fe fe-user"></i> <span>User Data</span></a>
+					<a href="/admin/patient"><i class="fe fe-user"></i> <span>Users</span></a>
+				</li>
+				<li> 
+					<a href="/admin/social-media"><i class="fe fe-users"></i> <span>Social Media</span></a>
 				</li>
 				<li> 
 					<a href="/admin/change-settings"><i class="fe fe-vector"></i> <span>Settings</span></a>

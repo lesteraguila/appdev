@@ -42,7 +42,7 @@
 									<div class="card-body">
 									
 										<!-- Checkout Form -->
-										<form action="<?= base_url('AppointmentController/insertbooking')?>" method="post" autocomplete="off">
+										<form action="<?= base_url('AppointmentController/insertbooking')?>" method="post" autocomplete="off" class="needs-validation" novalidate>
 											<!-- Personal Information -->
 											<div class="info-widget">
 												<h4 class="card-title">Personal Information</h4>
@@ -50,25 +50,25 @@
 													<div class="col-md-6 col-sm-12">
 														<div class="form-group card-label">
 															<label>First Name</label>
-															<input class="form-control" type="text" name="firstname">
+															<input class="form-control" type="text" name="firstname" required>
 														</div>
 													</div>
 													<div class="col-md-6 col-sm-12">
 														<div class="form-group card-label">
 															<label>Last Name</label>
-															<input class="form-control" type="text" name="lastname">
+															<input class="form-control" type="text" name="lastname" required>
 														</div>
 													</div>
 													<div class="col-md-6 col-sm-12">
 														<div class="form-group card-label">
 															<label>Phone</label>
-															<input class="form-control" type="text" name="number">
+															<input class="form-control" type="text" name="number" required>
 														</div>
 													</div>
                                                     <div class="col-md-6 col-sm-12">
 														<div class="form-group card-label">
 															<label>Date and time</label>
-															<input class="form-control" type="text" id="datetimepicker" name="datetime">
+															<input class="form-control" type="text" id="datetimepicker" name="datetime" required>
 														</div>
 													</div>
 													<div class="col-md-6 col-sm-12">
@@ -79,7 +79,7 @@
                                                     <div class="col-md-6 col-sm-12">
 														<div class="form-group card-label">
 															<label>Treatment</label>
-															<select class="form-control" type="text" name ="treatment">
+															<select class="form-control" type="text" name ="treatment" required>
 																<option>-- Select --</option>
 																<option>Cleaning</option>
 																<option>Whitening</option>
